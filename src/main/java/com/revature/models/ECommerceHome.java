@@ -19,22 +19,27 @@ public class ECommerceHome {
 	ShopDAO shopDAO = new ShopDAO();
 	ItemsDAO itemDAO = new ItemsDAO();
 	
+	// Create variable
+	String username;
+	String password;
 	 
 	 //All of the content display options and control flow are contained within this method
 	 public void displayECommerceHome() {
 		 
+		    boolean displayLogin = true; // Need to handle to display the interaction to the costumer in the application.
 		    boolean displayECommerceHome = true; //Use this to handle whether the Home page will continues after customer input
 			Scanner scan = new Scanner(System.in); //The Scanner allows to the object to parse (read) user input
 		
 		    //Instantiate a Logger object so that we can log application flow
 			// It'll show the name of the platform into the home-page
-			Logger log = LogManager.getLogger(Launcher.class);
+		//	Logger log = LogManager.getLogger(ECommerceHome.class);
 		 			
+			         
 			          // It'll will have an while loop to display the home that will have all contents
 			          // This loop while (true) be executed the boolean condition. 
 			          while (displayECommerceHome) { 
 			        	  
-			        	  
+			        	 
 			        	  System.out.println("      |                                                                 | ");
 			  			  System.out.println("      ****--------------     ***********     ------------------------**** ");
 			  			  System.out.println("           WECOME TO THE  ' 'CHA-CHA-CHA' '  E-COMMERCE SHOP PLATFORM    ");
@@ -53,17 +58,32 @@ public class ECommerceHome {
 			        	  System.out.println("        Choose Your Shoes:  Converse  -  Vans   -  Fila                   ");
 			        	  System.out.println("      *                                                                 * ");
 			        	  System.out.println("        HELLO CUSTOMER ----- Please Log In ");
-			        	
+			        	  System.out.println("      *                                                                 * ");
+			  			
+		   // Start While loop that will hold the logging.
+		   // The costumer/user can login into the DB.  	        	  
+            while (displayLogin) {
+						
+				//	Prompt the user for username/password and store those inputs in String fields
+			 	System.out.println("        USERNAME:");
+				String username = scan.nextLine();
+				System.out.println("        PASSWORD:");
+				String password = scan.nextLine();
+                    }      
+         
+                       if(username.equals("Username") && password.equals("Password")) {
+                                 System.out.println("Access Granted! Welcome! ^_^ ");
+              	                 displayLogin = false;
+  				                  break;
+                                     }
+	                               System.out.println("LOGIN FAILED! TRY AGAIN.");
+		
+            
+            
+            
 			        	  // The application have a CLI users(Customer) and log customer can interact with the application/database
 			        	  int input = scan.nextInt();
 			        	  scan.nextLine();   
-			 
-			        	  
-			//Prompt the user for username/password and store those inputs in String fields
-			System.out.println("USERNAME:");
-			String username = scan.nextLine();
-			System.out.println("PASSWORD:");
-			String password = scan.nextLine();
 			        	  
 			        	  
 			                  // The statement will choose the all items and the customer can interact with the shop
