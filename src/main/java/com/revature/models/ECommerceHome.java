@@ -9,19 +9,18 @@ import org.apache.logging.log4j.Logger;
 import com.revature.Launcher;
 import com.revature.daos.ItemsDAO;
 import com.revature.daos.ShopDAO;
+import com.revature.daos.UserDAO;
 
 //This ECommerceHome Class will have a method that displays Customer, Shop, MyCart and User that can interact with: displayECommerceHome()
 //ECommerceHome, will give give inputs that will interact with the database
 public class ECommerceHome {
 	
 	
-	//Instantiating an ShoDAO and ItemsDAO objects, need to used their methods
+	//Instantiating an ShopDAO, ItemsDAO, and UserDAO objects, need to used their methods
 	ShopDAO shopDAO = new ShopDAO();
 	ItemsDAO itemDAO = new ItemsDAO();
+    UserDAO uDAO = new UserDAO();
 	
-	// Create variable
-	String username;
-	String password;
 	 
 	 //All of the content display options and control flow are contained within this method
 	 public void displayECommerceHome() {
@@ -29,58 +28,61 @@ public class ECommerceHome {
 		    boolean displayLogin = true; // Need to handle to display the interaction to the costumer in the application.
 		    boolean displayECommerceHome = true; //Use this to handle whether the Home page will continues after customer input
 			Scanner scan = new Scanner(System.in); //The Scanner allows to the object to parse (read) user input
-		
-		    //Instantiate a Logger object so that we can log application flow
-			// It'll show the name of the platform into the home-page
-		//	Logger log = LogManager.getLogger(ECommerceHome.class);
-		 			
+				 			
 			         
 			          // It'll will have an while loop to display the home that will have all contents
 			          // This loop while (true) be executed the boolean condition. 
 			          while (displayECommerceHome) { 
 			        	  
 			        	 
-			        	  System.out.println("      |                                                                 | ");
-			  			  System.out.println("      ****--------------     ***********     ------------------------**** ");
-			  			  System.out.println("           WECOME TO THE  ' 'CHA-CHA-CHA' '  E-COMMERCE SHOP PLATFORM    ");
-			  			  System.out.println("      ****--------------     ***********     ------------------------**** ");
-			  			  System.out.println("      |                                                                 | ");
-			  			  System.out.println("      |                                                                 | ");
-			  			  System.out.println("            -----------------------------------------------------         ");
-			  			  System.out.println("      *                                                                 * ");
-			        	  System.out.println("      |                                                                 | ");
-			        	  System.out.println("                      ' WELCOME TO OUR E-COMMERCE SHOP '                  "); 
+			        	  System.out.println("   |                                                                 | ");
+			  			  System.out.println("   ****--------------     ***********     ------------------------**** ");
+			  			  System.out.println("        WECOME TO THE  ' 'CHA-CHA-CHA' '  E-COMMERCE SHOP PLATFORM    ");
+			  			  System.out.println("   ****--------------     ***********     ------------------------**** ");
+			  			  System.out.println("   |                                                                 | ");
+			  			  System.out.println("   |                                                                 | ");
+			  			  System.out.println("         -----------------------------------------------------         ");
+			  			  System.out.println("   *                                                                 * ");
+			        	  System.out.println("   |                                                                 | ");
+			        	  System.out.println("                   ' WELCOME TO OUR E-COMMERCE SHOP '                  "); 
 			        	  
 			        	  
 			        	  // Display the menu bar that the customer will choose their shop/log
-			        	  System.out.println("      *                                                                 * ");
-			        	  System.out.println("                                                                          ");
-			        	  System.out.println("        Choose Your Shoes:  Converse  -  Vans   -  Fila                   ");
-			        	  System.out.println("      *                                                                 * ");
-			        	  System.out.println("        HELLO CUSTOMER ----- Please Log In ");
-			        	  System.out.println("      *                                                                 * ");
+			        	  System.out.println("   *                                                                 * ");
+			        	  System.out.println("                                                                       ");
+			        	  System.out.println("   *                                                                 * ");
+			        	  System.out.println("     HELLO CUSTOMER ----- Please Log In or Make your Purchase  ");
+			        	  System.out.println("   *                                                                 * ");
 			  			
 		   // Start While loop that will hold the logging.
 		   // The costumer/user can login into the DB.  	        	  
-            while (displayLogin) {
-						
-				//	Prompt the user for username/password and store those inputs in String fields
-			 	System.out.println("        USERNAME:");
-				String username = scan.nextLine();
-				System.out.println("        PASSWORD:");
-				String password = scan.nextLine();
-                    }      
-         
-                       if(username.equals("Username") && password.equals("Password")) {
-                                 System.out.println("Access Granted! Welcome! ^_^ ");
-              	                 displayLogin = false;
-  				                  break;
-                                     }
-	                               System.out.println("LOGIN FAILED! TRY AGAIN.");
-		
-            
-            
-            
+		   while(displayLogin) {		
+			      System.out.println("     USERNAME:");
+			      String username = scan.nextLine();
+			      System.out.println("     PASSWORD:");
+			      String password = scan.nextLine();
+			      			
+			      		    //Control flow based on whether the user provided accurate login credentials
+			      			if(uDAO.login(username, password)) {
+			      				System.out.println("     Access Granted! Welcome! ^_^ ");
+			      				displayLogin = false;
+			      				break;
+			      			}
+			      			
+			      			System.out.println("         LOGIN FAILED! TRY AGAIN. ");
+			      			
+			      		}
+			      		
+                                       // will display the menu as long the displayECommerceHome is true
+		                               while(displayECommerceHome) {
+		                            	    
+		                            	   //This will be display the customer to choose the option shop he will want.
+		                            	   System.out.println("   *                                                                 * ");
+		         			        	   System.out.println("   |                                                                 | "); 
+		                            	   System.out.println("                            CHOOSE AN OPTION                           ");
+		                       			   System.out.println("                         ----------------------                        ");
+		                       			   System.out.println("                      CONVERSE - VANZ - FILA - LOG                     ");  
+		                            	   
 			        	  // The application have a CLI users(Customer) and log customer can interact with the application/database
 			        	  int input = scan.nextInt();
 			        	  scan.nextLine();   
@@ -126,6 +128,6 @@ public class ECommerceHome {
 	 } //method ends here
 
 
-	
+	 }
 
 } //class ends here
