@@ -8,7 +8,7 @@ public class Shop {
 		private int shop_id;
 		private String brands_type;
 		private String color_name;
-		private float size_number;
+		private int size_number;
 		
 		   
 		// Every Items(Shop) will have their identification
@@ -20,7 +20,7 @@ public class Shop {
 			       // TODO Auto-generated constructor stub
 		}
 		     // Create args constructors.
-			public Shop(int shop_id, String brands_type, String color_name, float size_number) {
+			public Shop(int shop_id, String brands_type, String color_name, int size_number) {
 				super();
 				this.shop_id = shop_id;
 				this.brands_type = brands_type;
@@ -60,7 +60,7 @@ public class Shop {
 		         	public float getSize_number() {
 				              return size_number;
 			                              }
-			        public void setSize_number(float size_number) {
+			        public void setSize_number(int size_number) {
 				              this.size_number = size_number;
 			                              }
 			       

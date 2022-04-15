@@ -11,7 +11,7 @@ public interface CustomerDAOInterface {
 	ArrayList<Customer> getCustomer();
 	//This method will return an Customer which we'll get by their id
 	Customer getCustomerByID (int id);
-	//This method will take add customer, and insert it into the database
+	//This method will take add customer and insert it into the database
 	void addCustomer(Customer customer);
 	
 

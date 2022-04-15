@@ -10,18 +10,18 @@ public class ItemsDAO implements ItemsDAOInterface{
 	    // The ArrayList of shop objects that, which will act from the database
 		ArrayList<Items> itemsList = new ArrayList<>();
 		
-		Shop shopcon = new Shop (1, " Converse ", " White ", 7);
-		Shop shopvan = new Shop (2, " Vans ", "Black", 6);
-		Shop shopfil = new Shop (3, " Fila ", " Pink ", 8);
+		Shop shopcon = new Shop (1, " Canvas Platform Chuck Taylor All Star ", " White ", 7);
+		Shop shopvan = new Shop (2, " Era™ Core Classics ", "Black", 6);
+		Shop shopfil = new Shop (3, " Women's Disruptor 2 Wedge  ", " Pink ", 8);
 		
 		            
 		//Instantiate some type Objects that the costumer will see
         //This method will be communicating directly with to the database
 	    //we're using the all-args constructor which takes in an type and price
 		public ArrayList<Items> getItems(){
-			itemsList.add(new Items (1, " Canvas Platform Chuck Taylor All Star ", (float) 50.00));
-			itemsList.add(new Items (2, " Era™ Core Classics ", (float) 45.00));
-			itemsList.add(new Items (3, " Women's Disruptor 2 Wedge ", (float) 101.00));
+			itemsList.add(new Items (1, " Converse ", (float) 50.00));
+			itemsList.add(new Items (2, " Vanz ", (float) 45.00));
+			itemsList.add(new Items (3, " Fila ", (float) 101.00));
 			
 			      return itemsList;
 		}

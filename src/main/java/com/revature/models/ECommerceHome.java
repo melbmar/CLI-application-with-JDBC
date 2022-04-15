@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import com.revature.Launcher;
 import com.revature.daos.ItemsDAO;
 import com.revature.daos.ShopDAO;
-import com.revature.daos.UserDAO;
+import com.revature.daos.UsersDAO;
 
 //This ECommerceHome Class will have a method that displays Customer, Shop, MyCart and User that can interact with: displayECommerceHome()
 //ECommerceHome, will give give inputs that will interact with the database
@@ -19,7 +19,7 @@ public class ECommerceHome {
 	//Instantiating an ShopDAO, ItemsDAO, and UserDAO objects, need to used their methods
 	ShopDAO shopDAO = new ShopDAO();
 	ItemsDAO itemDAO = new ItemsDAO();
-    UserDAO uDAO = new UserDAO();
+    UsersDAO uDAO = new UsersDAO();
 	
 	 
 	 //All of the content display options and control flow are contained within this method
@@ -81,7 +81,7 @@ public class ECommerceHome {
 		         			        	   System.out.println("   |                                                                 | "); 
 		                            	   System.out.println("                            CHOOSE AN OPTION                           ");
 		                       			   System.out.println("                         ----------------------                        ");
-		                       			   System.out.println("                      CONVERSE - VANZ - FILA - LOG                     ");  
+		                       			   System.out.println("                         CONVERSE - VANZ - FILA                        ");  
 		                            	   
 			        	  // The application have a CLI users(Customer) and log customer can interact with the application/database
 			        	  int input = scan.nextInt();
