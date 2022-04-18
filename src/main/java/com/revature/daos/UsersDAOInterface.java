@@ -8,14 +8,15 @@ public interface UsersDAOInterface {
 	
 	//This method will return every user from the database 
 	ArrayList<Users> getUsers();
-	//This method will return an User which we'll get by user_id
-	Users getUserById (int Id);
 	//This method will take add user and insert it into the database
-	void addUser (Users user);
-	//This method will take add password and insert it into the database
-	void addUserpassword (Users user);
+	void addUsers(Users user);
+	//This method will return every user from the database 
+	ArrayList<Users> getUsersbyFirstName(String name);
+	//This method will take get user.
+	ArrayList<Users> getUsers(Users user);
+	ArrayList<Users> displayUsers();
 	
+
 	
-	
-	
+		
 }

@@ -1,10 +1,14 @@
 package com.revature.daos;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.revature.models.Customer;
-import com.revature.models.Items;
 import com.revature.models.Shop;
+import com.revature.utils.ConnectionUtil;
 
 
 
@@ -12,48 +16,114 @@ import com.revature.models.Shop;
 //DAO stands for Data Access Object - it's the layer of classes that directly interact with our database
 public class CustomerDAO implements CustomerDAOInterface {
 	
-	// The ArrayList of shop objects that, which will act from the database
-		ArrayList<Customer> customerList = new ArrayList<>();
+	
+	    //Instantiate a RoleDAO object so that we can use one of it's methods in the getEmployees() method
+		ShopDAO shopDAO = new ShopDAO();
 		
-		//Instantiate some Shop and Items Objects to use in our Shop and Items objects
-		//Instantiate some type Objects that the costumer will see
-		//Shop
-		Shop shopcon = new Shop (1, " Converse ", " White ", 7);
-		Shop shopvan = new Shop (2, " Vans ", "Black", 6);
-		Shop shopfil = new Shop (3, " Fila ", " Pink ", 8);
+
+	
+	
+	@Override
+	public ArrayList<Customer> getCustomerByshop(String brands_name) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			//since I want to get customer by their brands_name, I need access to the data in both tables
+			String sql = "select * from customer inner join shop "
+					+ "on shop_id = shop_id_fk where brands_name = ?;";
+			//we have a variable in the SQL statement, so we need a PreparedStatement to fill it in
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			//now we just need to input the variable value
+			ps.setString(1, brands_name);
+			//Execute the query into a ResultSet object
+			ResultSet rs = ps.executeQuery();
+			
+			//Instantiate an empty ArrayList that we'll fill with the data from the ResultSet
+			ArrayList<Customer> customerList = new ArrayList<>();
+			//while there are records remaining in the ResultSet...
+			while(rs.next()) {
+				
+				//create new Employee objects based on the data, and fill in the ArrayList
+				Customer customers = new Customer(
+						rs.getInt("customer_id"),
+						rs.getString("first_name"),
+						rs.getString("second_name"),
+						rs.getString("email"),
+						rs.getString("address")
+						//null
+						);
+				//get the foreign key from the shop table to use in our getcustomerbyshop() method
+				String shopFK = rs.getString("shop_id_fk");
+				
+				Shop c = shopDAO.getShopByBrands_name(shopFK);
+				
+				//fill in the previously null Role variable in this new Employee object (with the setter!)
+				customers.setBrands_name(c);
+				//fill in the employeeList with each while loop until eventually rs.next() == false.
+				customerList.add(customers);
+			}
+				return customerList;	
+			
+		} catch (SQLException e) {
+			System.out.println("Something went wrong selecting customer by brands_name");
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public void addCustomer(Customer customer) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "insert into customer (customer_id, first_name, second_name, email, address)"
+					+ "values(?,?,?,?,?);";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1,customer.getCustomer_id());
+			ps.setString(2,customer.getFirst_name());
+			ps.setString(3, customer.getSecond_name());
+			ps.setString(4, customer.getEmail());
+			ps.setString(5, customer.getAddress());
+			
+			
+			 
+			     ps.executeUpdate();
+			     
+			          System.out.println("   New Customer" + customer.getFirst_name() +" "+ customer.getSecond_name()+ " added. Welcome" );
+			
+		} catch (SQLException e) {
+			System.out.println("Something went wrong inserting Customer!");
+			e.printStackTrace();
+			
+		}
 		
-		// Items
-		Items itemcon = new Items (1, " Canvas Platform Chuck Taylor All Star ", (float) 50.00);
-		Items itemvan = new Items (2, " Era™ Core Classics ", (float) 45.00);
-		Items itemfil = new Items (3, " Women's Disruptor 2 Wedge ", (float) 101.00);
+	}
+
+	@Override
+	public Customer getCustomerByID(int id) {
+		       
+		return null;
+	}
+
+	
+
+	@Override
+	public ArrayList<Customer> getCustomer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addCustomer(Customer customer, int shop_id) {
+		// TODO Auto-generated method stub
 		
-		             
-		            //This TEMPORARY method will return the Customer from the database
-		            //This method body will actually be communicating directly to the database
-		            public ArrayList <Customer> getCustomer(){
-		            	customerList.add(new Customer(1, "First Name", "Second Name", "firssecd@mail.com", "New York, New York", shopcon, itemcon));
-		            	customerList.add(new Customer(2,"First Name", "Second Name", "firssecd@mail.com", "New York, New York", shopvan, itemvan));
-		            	customerList.add(new Customer(3, "First Name", "Second Name", "firssecd@mail.com", "New York, New York", shopfil, itemfil));
-		            
-		            	    return customerList;
-		            }
+	}
 
-		            
-		            
-		           // Override those methods
-					@Override
-					public Customer getCustomerByID(int id) {
-						// TODO Auto-generated method stub
-						return null;
-					}
 
-					@Override
-					public void addCustomer(Customer customer) {
-						// TODO Auto-generated method stub
-						
-					}
-                    
 
+	
+
+	
+	
+	
+		           
 
 
 					

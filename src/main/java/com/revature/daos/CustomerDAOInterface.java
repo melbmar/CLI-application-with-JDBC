@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.revature.models.Customer;
 
 
+
 public interface CustomerDAOInterface {
 	
 	//This method will return every shop(items) from the database 
@@ -13,6 +14,9 @@ public interface CustomerDAOInterface {
 	Customer getCustomerByID (int id);
 	//This method will take add customer and insert it into the database
 	void addCustomer(Customer customer);
+	//This method will return an Customer by shop
+	ArrayList<Customer> getCustomerByshop (String brands_name);
+	void addCustomer (Customer customer, int shop_id);
 	
 
 }

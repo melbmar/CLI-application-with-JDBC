@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.revature.models.Customer;
-import com.revature.models.Items;
 import com.revature.models.Shop;
 
 
@@ -22,7 +21,6 @@ public class TestClass {
 
 	//Declare an Uninitialized a shop, customer, item object so we can use and test it's methods
 	static Shop shop;
-	static Items items;
 	static Customer customer;
 	
 	
@@ -30,10 +28,11 @@ public class TestClass {
 	       String color = "Red";
 	       float size = 7;
 	       String name1 = "Canvas Platform Chuck Taylor All Star";
-	       float price = 50.00f;
 	       String email = "firssecd@mail.com";
 	       String address = "New York 'fake'";
 	       int customer_id = 2;
+	       String first_name = "Melb";
+	    		  
 	       
     
 	
@@ -42,7 +41,6 @@ public class TestClass {
 	    public void initialise() {
 	    	System.out.println(" In the @Before method ");
 	    	shop = new Shop();
-	    	items = new Items();
 	    	customer = new Customer();
 	    }
 	    
@@ -51,7 +49,6 @@ public class TestClass {
 		public void uninitialize() {
 			System.out.println(" In the @After method ");
 			shop = null;
-			items = null;
 			customer = null;
 	    }
 	
@@ -86,15 +83,15 @@ public class TestClass {
 	    @Test
 	    public void testBrands_name() {
 	    	System.out.println(" YOUR BRAND IS CONVERSE");
-	    	String result = items.getBrands_name();
+	    	String result = shop.getBrands_name();
 	    	assertTrue(result == name1);
 	    	
 	    }
 	    @Test
-	    public void testPrice() {
-	    	System.out.println(" YOUR BRAND PRICE");
-	    	float result = items.getPrice();
-	    	assertTrue(result == price);
+	    public void testfirst_name() {
+	    	System.out.println(" YOUR FIRST NAME");
+	    	String result = customer.getFirst_name();
+	    	assertTrue(result == first_name);
 	    	
 	    }
 	    

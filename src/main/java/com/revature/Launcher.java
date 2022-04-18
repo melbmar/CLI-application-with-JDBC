@@ -43,7 +43,8 @@ public class Launcher {
 		
 		
 		          // Call the EcommerceHome method to display the Home from the Platform
-		          home.displayECommerceHome();	
+		          //use the Menu's displayMenu() method to use the Menu
+				  home.displayECommerceHome();
 	
 	}
 	

@@ -1,6 +1,7 @@
 package com.revature.daos;
 
 import java.util.ArrayList;
+
 import com.revature.models.Shop;
 
 //The interface containt abstract method. It be implemented by concrete class
@@ -18,5 +19,9 @@ public interface ShopDAOInterface {
 		void editShop(Shop shop);
 		//This method will delete an shop(items), and add it into the database
 		void deleteShop(Shop shop);
+		ArrayList<Shop> getAllShop();
+		Shop getShopByBrands_name(String brand_name);
+		void updateShopBrandsName(String brands_type, int number);
+		
 		
 }
