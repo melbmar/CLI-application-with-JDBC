@@ -21,7 +21,7 @@ public interface ShopDAOInterface {
 		void deleteShop(Shop shop);
 		ArrayList<Shop> getAllShop();
 		Shop getShopByBrands_name(String brand_name);
-		void updateShopBrandsName(String brands_type, int number);
+		void updateShopBrandsName(String brands_type, String brands_name);
 		
 		
 }

@@ -4,6 +4,7 @@
 
 -- Create user table that will hold the customer(user) and password, incluide their firts and second names.
 CREATE TABLE users(
+user_id serial PRIMARY KEY,
 first_name TEXT,
 second_name TEXT,
 username varchar (50) NOT NULL,

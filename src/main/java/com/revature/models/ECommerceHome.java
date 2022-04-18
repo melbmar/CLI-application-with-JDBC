@@ -98,9 +98,10 @@ public class ECommerceHome {
 		                       			   System.out.println("     3: Show shop by ID                      ");
 		                       			   System.out.println("     4: Show customer by Shop                "); 
 		                       			   System.out.println("     5: Add new Customer                     ");
-		                       			   System.out.println("     6: Update new shop                      ");
-		                       			   System.out.println("     7: Remove new shop                      ");
-		                       			   System.out.println("     8: EXIT                                 ");
+		                       			   System.out.println("     6: Add new shop                         ");
+		                       			   System.out.println("     7: Update new shop                      ");
+		                       			   System.out.println("     8: Remove new shop                      ");
+		                       			   System.out.println("     9: EXIT                                 ");
 		                              
 		                     // The application have a CLI users(Customer) and log customer can interact with the application/database
 		                     int input = scan.nextInt();
@@ -126,8 +127,8 @@ public class ECommerceHome {
 		      			               				  
 		      			               				  
 		      			               				         // Instantiating an ArryList to add into the user table the new input
-		      			               				         Users users = new Users(fName, lName, uName, pName);
-		      			               				         uDAO.addUsers(users);
+		      			               				         Users user = new Users( fName, lName, uName, pName);
+		      			               				         uDAO.addUsers(user);
 		      			               			             
   
 		      			        	                  break;
@@ -137,18 +138,22 @@ public class ECommerceHome {
 		      			        	                	ArrayList<Users> use = uDAO.displayUsers();
 		      			        	                        use.forEach(users -> {
 		      			        	                    	System.out.println("   *                                                                 * ");
+		      			        	                    	System.out.println("    First Name: " + users.getFirst_name());
+		      			        	                    	System.out.println("    Second Name: " + users.getSecond_name());
 		      			        	                    	System.out.println("    Username: " + users.getUsername());
 		      			        	                    	System.out.println("    Userpassword: " + users.getUserpassword());
 		      			        	                    	System.out.println("   *                                                                * ");
 		      			        	                    });
+		      			        	                        
+		      			        	                   
 		      			        	                
-		      			        	                   break;}
+		      			        	                   break;
+		      			        	                   }
 		      			        	                
-		         			                                    
 		      			        	                case 3:{
-		      			        	                	System.out.println("    What shop ID whould you like to check?");
+		      			        	                	System.out.println("    What shop Id whould you like to check?");
 		      			        	                	int idInput = scan.nextInt();
-		      			        	                	scan.nextLine();
+		      			        	                	//scan.nextLine();
 		      			        	                	
 		      			        	                	//Creating shop object.
 		      			        	                	Shop shop = shopDAO.getShopById(idInput);
@@ -196,26 +201,45 @@ public class ECommerceHome {
 	   		         	    				            String aName = scan.nextLine();
 	   		         	    				        
 		   		         	    				        
-		   		         	    				        int shopId = scan.nextInt();
-		   		         	    				            Customer cusm = new Customer(shopId, fName, sName, eName, aName);
+		   		         	    				            int shopId = scan.nextInt();
+		   		         	    				            Customer cusm = new Customer(0, fName, sName, eName, aName);
 		   		         	    				            cusDAO.addCustomer(cusm);
+		   		         	                               }
 		   		         	 	                        break;
-		                                                     }
-		         			            
-		   		         	                          case 6: {
+		                                                     
+		   		         	                          case 6:{
+		   		         	                        	    
+		   		         	                        	   System.out.println("    Add the Brand type");
+		   		         	        				       String bName = scan.nextLine();
+		   		         	        				       
+		   		         	        				       System.out.println("    Add the Color ");
+	   		         	        				           String cName = scan.nextLine();
+	   		         	        				           
+	   		         	        				           System.out.println("    Add the Size ");
+   		         	        				               int sName = scan.nextInt();
+   		         	        				               
+   		         	        				               System.out.println("    Add the Brand name (Converse, Vanz, and Fila)");
+		         	        				               String gName = scan.nextLine();
+		         	        				               
+		         	        				                  Shop shop = new Shop (0,bName, cName, sName, gName);
+		         	        				                  shopDAO.addShop(shop); 
+		         	        				                  
+		   		         	        				       
+		   		         	                          }
+	   		         	                          case 7: {
 		   		         	                        	    System.out.println("    Which shop would you like to change?");
 		   		         	                        	    String brands_typeInput = scan.nextLine();
 		   		         	                        	    
 		   		         	                        	    System.out.println("    What is the new type?");
+		   		         	                        	    String brandsn_typeInput = scan.nextLine();
 		   		         	                        	    
-		   		         	                        	    int size_numberInput = scan.nextInt();
-		   		         	        				        scan.nextLine();
-		   		         	        				        
-		   		         	        				        shopDAO.updateShopBrandsName(brands_typeInput, size_numberInput);
+		   		         	                        	    // // Instantiating an ArryList to add into the user table the new input
+		   		         	    	                       shopDAO.updateShopBrandsName(brands_typeInput, brandsn_typeInput);
+		   		               
 		   		         	                                }
 		   		         	                        	break;
 		   		         	                        		
-		   		         	                         case 7: {
+		   		         	                         case 8: {
 		   		         	                        	     System.out.println("    Enter the ID of the shop you want to delete"); 
 		   		         	                        	     int idInput = scan.nextInt();
 		   		         	         				
@@ -223,8 +247,8 @@ public class ECommerceHome {
 		   		         	                                }
 		   		         	                          break;
 		   		         	                          
-		   		         	                         case 8:{
-		   		         	                              System.out.println("    Bye Bye user! Come again soon.");
+		   		         	                         case 9:{
+		   		         	                              System.out.println("    Bye Bye user! Come again soon.  ^_^ ");
 		   		         	                        	      displayECommerceHome = false;
 		   		         	                        	      
                                                               }

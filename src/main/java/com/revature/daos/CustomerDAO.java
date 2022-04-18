@@ -75,7 +75,10 @@ public class CustomerDAO implements CustomerDAOInterface {
 		try(Connection conn = ConnectionUtil.getConnection()){
 			String sql = "insert into customer (customer_id, first_name, second_name, email, address)"
 					+ "values(?,?,?,?,?);";
+			//String will connect put send(inside) of the database
 			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			//fill in the values of our variables using ps.setXYZ()
 			ps.setInt(1,customer.getCustomer_id());
 			ps.setString(2,customer.getFirst_name());
 			ps.setString(3, customer.getSecond_name());
@@ -83,10 +86,10 @@ public class CustomerDAO implements CustomerDAOInterface {
 			ps.setString(5, customer.getAddress());
 			
 			
-			 
+			    //Execute the Update!! (the method is called executeUpdate(), but it's for INSERTS, UPDATES, and DELETES)
 			     ps.executeUpdate();
 			     
-			          System.out.println("   New Customer" + customer.getFirst_name() +" "+ customer.getSecond_name()+ " added. Welcome" );
+			          System.out.println("   New Customer " + customer.getFirst_name() +" "+ customer.getSecond_name()+ " added in our system " );
 			
 		} catch (SQLException e) {
 			System.out.println("Something went wrong inserting Customer!");

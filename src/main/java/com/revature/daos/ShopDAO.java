@@ -45,23 +45,23 @@ public class ShopDAO implements ShopDAOInterface {
 			}
 		 
 			@Override
-			public void updateShopBrandsName(String brands_type, int size_number) {
+			public void updateShopBrandsName(String brands_type, String brands_name) {
 				try(Connection conn = ConnectionUtil.getConnection()){
 					
 					//write out our SQL UPDATE command
-					String sql = "update shop set shop_size-number = ? where shop_brands_type = ?";
+					String sql = "update shop set brands_type = ? where brands_name = ?";
 					
 					PreparedStatement ps = conn.prepareStatement(sql);
 					
-					ps.setInt(1, size_number);
-					ps.setString(2, brands_type);
+					ps.setString(1, brands_type);
+					ps.setString(2, brands_name);
 					
 					ps.execute();
 					
-					System.out.println(brands_type + " salary has been updated to: " + size_number);
+					System.out.println(brands_type + " salary has been updated to: " + brands_name);
 					
 				} catch (SQLException e) {
-					System.out.println("Couldn't update !");
+					System.out.println("    Couldn't update !");
 					e.printStackTrace();
 					
 				}
@@ -94,10 +94,37 @@ public class ShopDAO implements ShopDAOInterface {
 			
 			@Override
 			public void addShop(Shop shop) {
-				
-				
-			}
+				 try(Connection conn = ConnectionUtil.getConnection()){
+					 
+					  //String will connect put send(inside) of the database
+					  String sql = "insert into shop (shop_id, brands_type, color_name, size_number, brands_name)" 
+					   + " values (?,?,?,?,?);"; 
+					  
+	                    //Instantiate a PreparedStatement to fill in the variables of our initial SQL String
+					    PreparedStatement ps = conn.prepareStatement(sql);
+					  
+					    ps.setInt(1, shop.getShop_id());
+						ps.setString(2, shop.getBrands_type());
+						ps.setString(3, shop.getColor_name());
+						ps.setInt(4, shop.getSize_number());
+						ps.setString(5, shop.getBrands_name());
+						
+						//Execute the Update!! (the method is called executeUpdate(), but it's for INSERTS, UPDATES, and DELETES)
+						ps.executeQuery();
+						
+						//Tell the user the insert was successful
+					    System.out.println("         Shop" + shop.getBrands_name() + ", " + shop.getColor_name() +  ", "
+					    		                     + shop.getColor_name() + ", " + shop.getSize_number() + ", " + shop.getBrands_name() +
+					    		                     " added.");
+			   
+			 } catch (SQLException e) {
+			System.out.println("Something happened inserting Your Information !");
+				e.printStackTrace();}
+			 }
 
+	
+			
+			
 
 			@Override
 			public Shop getShopByBrands_name(String brand_name) {

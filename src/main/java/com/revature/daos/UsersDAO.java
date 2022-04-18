@@ -34,8 +34,8 @@ public class UsersDAO implements UsersDAOInterface{
 		 try(Connection conn = ConnectionUtil.getConnection()){
 			 
 			  //String will connect put send(inside) of the database
-			  String sql = "insert into users (first_name, second_name, username, userpassword)" 
-			   + " values (?,?,?,?);"; 
+			  String sql = "insert into users (users_id, first_name, second_name, username, userpassword)" 
+			   + " values (?,?,?,?, ?);"; 
 			  
 			  
 
@@ -44,6 +44,7 @@ public class UsersDAO implements UsersDAOInterface{
 			    
 			  
 			  //fill in the values of our variables using ps.setXYZ()
+			  ps.setInt(1, user.getUsers_id()); 
 			  ps.setString(1, user.getFirst_name());
 			  ps.setString(2, user.getSecond_name());
 			  ps.setString(3, user.getUsername());
@@ -54,7 +55,7 @@ public class UsersDAO implements UsersDAOInterface{
 			  //ps.executeQuery();
                  	
 				    //Tell the user the insert was successful
-				    System.out.println("      'Welcome Oboard ' ");
+				    System.out.println("       'Welcome Oboard ' " + user.getFirst_name());
 		   
 		 } catch (SQLException e) {
 		System.out.println("Something happened inserting Your Information !");
@@ -79,13 +80,14 @@ public class UsersDAO implements UsersDAOInterface{
 				//Create a new Users object from each record in the ResultSet
 				//we're using the all args constructor of Employee to fill in new Employee objects with DB data
 			    Users us = new Users(
+			    		rs.getInt("users_id"),
 			    		rs.getString("first_name"),
 			    		rs.getString("second_name"),
 			    		rs.getString("username"),
-			    		rs.getString("userpassowrd")
+			    		rs.getString("userpassword")
 			    		);
 			    
-			    us.setUsername(sql);
+			    //us.setFirst_name(sql);
 			    //use .add() to populate our ArrayList with each new User object
 				usersList.add(us);
 			
@@ -121,6 +123,11 @@ public class UsersDAO implements UsersDAOInterface{
 	public ArrayList<Users> getUsers() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void displayUsers(ArrayList<Users> use) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
