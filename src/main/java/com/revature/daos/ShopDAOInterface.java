@@ -20,8 +20,9 @@ public interface ShopDAOInterface {
 		//This method will delete an shop(items), and add it into the database
 		void deleteShop(Shop shop);
 		ArrayList<Shop> getAllShop();
-		Shop getShopByBrands_name(String brand_name);
+		Shop getShopByBrands_name(String brands_name);
 		void updateShopBrandsName(String brands_type, String brands_name);
+		ArrayList<Shop> getAllShop(int brands_name);
 		
 		
 }

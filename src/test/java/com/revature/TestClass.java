@@ -1,7 +1,11 @@
 package com.revature;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotSame;
+
+import java.util.ArrayList;
 
 import javax.naming.NameNotFoundException;
 
@@ -9,6 +13,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.revature.daos.CustomerDAO;
+import com.revature.daos.ShopDAO;
+import com.revature.daos.UsersDAO;
 import com.revature.models.Customer;
 import com.revature.models.Shop;
 
@@ -18,12 +25,18 @@ import com.revature.models.Shop;
 // It allows the ensures when methods are running as expected.
 // It will be test the shop, customer, item class
 public class TestClass {
-
-	//Declare an Uninitialized a shop, customer, item object so we can use and test it's methods
+	
+	// Come from ShopDAO Class.
+	ShopDAO rd = new ShopDAO();
+	CustomerDAO rs = new CustomerDAO();
+	UsersDAO rx = new UsersDAO();
+	
+	
+	//Declare an Uninitialized a shop, customer object so we can use and test it's methods
 	static Shop shop;
 	static Customer customer;
 	
-	
+
 	       String name = "Converse";
 	       String color = "Red";
 	       float size = 7;
@@ -129,6 +142,25 @@ public class TestClass {
 	    	String result = customer.getusername();    	
 	    	assertEquals(username, result);
 	    }
-	
 	    
+	    
+	    @Test
+	    public void testRecordUniqueness() {
+	    	assertNotSame(rd.getShopById(1), rd.getShopById(2));
+	   
+	    }
+	    
+	    
+	    @Test
+	    public void testDataIsReturneOnValidShopSearch() {
+	    	assertNotNull(rs.getCustomerByshop("Converse"));
+		
+	    }
+
+	    
+	    @Test
+	    public void testSuccessfullLogin() {
+	    	assertTrue(rx.users("username", "userpassword"));
+		
+	    }
 } //class ends here

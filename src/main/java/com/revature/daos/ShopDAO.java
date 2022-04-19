@@ -58,7 +58,7 @@ public class ShopDAO implements ShopDAOInterface {
 					
 					ps.execute();
 					
-					System.out.println(brands_type + " has been updated to: " + brands_name + " thank you for make this change. ");
+					System.out.println(     brands_type + " has been updated to: " + brands_name + " thank you for make this change. ");
 					
 				} catch (SQLException e) {
 					System.out.println("    Couldn't update !");
@@ -82,7 +82,7 @@ public class ShopDAO implements ShopDAOInterface {
 					ps.executeUpdate();
 					//ps.executeQuery();
 					
-					System.out.println("     Get delete shop #" + brands_type);
+					System.out.println("    Get delete shop #" + brands_type);
 					
 					
 				} catch (SQLException e) {
@@ -116,9 +116,9 @@ public class ShopDAO implements ShopDAOInterface {
 						ps.executeUpdate();
 						
 						//Tell the user the insert was successful
-					    System.out.println("          New Shop" + shop.getBrands_name() + ", " + shop.getColor_name() +  ", "
-					    		                     + shop.getColor_name() + ", " + shop.getSize_number() + ", " 
-					    		                     + shop.getBrands_name()+ " was added successfully.");
+					    System.out.println("     New Shop " + shop.getBrands_type() + ", " + shop.getColor_name() +  ", "
+					    		                      + shop.getSize_number() + ", " 
+					    		                      + shop.getBrands_name()+ " was added successfully.");
 					    		                    
 			   
 			 } catch (SQLException e) {
@@ -142,7 +142,7 @@ public class ShopDAO implements ShopDAOInterface {
 		}
 
 		@Override
-		public ArrayList<Shop> getAllShop() {
+		public ArrayList<Shop> getAllShop(int id) {
 			// TODO Auto-generated method stub
 			return null;
 		}
@@ -159,7 +159,17 @@ public class ShopDAO implements ShopDAOInterface {
 			
 		}
 
+		@Override
+		public ArrayList<Shop> getAllShop() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
+		private void assertNotSame(Shop shopById) {
+			// TODO Auto-generated method stub
+			
+		}
+	   
 
 
 		

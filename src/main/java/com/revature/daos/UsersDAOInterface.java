@@ -15,6 +15,7 @@ public interface UsersDAOInterface {
 	//This method will take get user.
 	ArrayList<Users> getUsers(Users user);
 	ArrayList<Users> displayUsers();
+	boolean users(String user, String userpassword);
 	
 
 	

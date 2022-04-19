@@ -91,7 +91,7 @@ public class CustomerDAO implements CustomerDAOInterface {
 			    //Execute the Update!! (the method is called executeUpdate(), but it's for INSERTS, UPDATES, and DELETES)
 			     ps.executeUpdate();
 			     
-			          System.out.println("     The New  Customer " + customer.getFirst_name() +" "+ customer.getSecond_name()+ " was added in our system " );
+			          System.out.println("     The New  Customer " + customer.getFirst_name() +" "+ customer.getSecond_name()+ " was added in our system. " );
 			
 		} catch (SQLException e) {
 			System.out.println("Something went wrong inserting Customer!");
