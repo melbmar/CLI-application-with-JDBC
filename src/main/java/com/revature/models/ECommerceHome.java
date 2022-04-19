@@ -39,7 +39,8 @@ public class ECommerceHome {
 			          // This loop while (true) be executed the boolean condition. 
 			          while (displayECommerceHome) { 
 			        	  
-			        	 
+			        	  System.out.println("                                                                       ");
+			        	  System.out.println("                                                                       ");
 			        	  System.out.println("   |                                                                 | ");
 			  			  System.out.println("   ****--------------     ***********     ------------------------**** ");
 			  			  System.out.println("        WECOME TO THE  ' 'CHA-CHA-CHA' '  E-COMMERCE SHOP PLATFORM    ");
@@ -58,16 +59,18 @@ public class ECommerceHome {
 			        	  System.out.println("   *                                                                 * ");
 			        	  System.out.println("     HELLO USERS ----- Please log in and Enjoy the App  ");
 			        	  System.out.println("   *                                                                 * ");
+			        	  System.out.println("                                                                       ");
+			        	  System.out.println("                                                                       ");
 			  			
 		   // Start While loop that will hold the logging.
 		   // The costumer/user can login into the DB.  
 		   // Display the login prompt, and not let the user access the rest of the application until they log in	        	  
 			while(displayLogin) {
 			      			
-			System.out.println("USERNAME:");
-			      			
+			 System.out.println("USERNAME:");
+	      			
 			 String username = scan.nextLine();
-			      			
+			 System.out.println("                                                                                  ");     			
 			 System.out.println("PASSWORD:");
 			      			
 			 String password = scan.nextLine();
@@ -199,7 +202,7 @@ public class ECommerceHome {
 		   		                   					       for (Customer cu : customerList) {
 		   		                   					    	System.out.println("   *                                                                 * ");
 			      			        	                    System.out.println("   |                                                                 | ");
-			      			        	                    System.out.println("                                                                     ");
+			      			        	                    System.out.println("                                                                       ");
 			      			        	                    System.out.println("    ----------------------                        ");
 		      			        	                    	
 		   		                   						                 System.out.println(cu.getFirst_name());
@@ -207,7 +210,7 @@ public class ECommerceHome {
 		   		                   						                 System.out.println(cu.getEmail());
 		   		                   						                 System.out.println(cu.getAddress());
 		   		                   						    System.out.println("    ----------------------                        ");
-		   		                   						    System.out.println("                                                                     ");
+		   		                   						    System.out.println("                                                                       ");
 		   		                   						    System.out.println("   *                                                                 * ");
 			      			        	                    System.out.println("   |                                                                 | ");
 		      			        	          
@@ -219,7 +222,7 @@ public class ECommerceHome {
 		   		         	                        	    System.out.println("   *                                                                 * ");
 		      			        	                        System.out.println("    ----------------------                        ");
 		      			        	                        System.out.println("   *                                                                 * ");
-		      			        	                        System.out.println("                                                                     ");
+		      			        	                        System.out.println("                                                                       ");
 		      			        	                    System.out.println("    Enter Customer First Name");
 		   		         	        				    String fName = scan.nextLine();
 		   		         	                        	 
@@ -231,11 +234,11 @@ public class ECommerceHome {
 	   		         	    				        
 	   		         	    				            System.out.println("    Enter your Address");
 	   		         	    				            String aName = scan.nextLine();
-	   		         	    				                System.out.println("                                                                     ");
+	   		         	    				                System.out.println("                                                                       ");
 	   		         	    				                System.out.println("   *                                                                 * ");
       			        	                                System.out.println("    ----------------------                        ");
       			        	                                System.out.println("   *                                                                 * ");
-      			        	                                System.out.println("                                                                     ");
+      			        	                                System.out.println("                                                                       ");
 		   		         	    				            // int shopId = scan.nextInt();
 	   		         	    				                // Instantiating an ArryList to add into the customer table the new input
 		   		         	    				            Customer cusm = new Customer (fName, sName, eName, aName);
@@ -248,7 +251,7 @@ public class ECommerceHome {
 		   		         	                        	      System.out.println("   *                                                                 * ");
 		      			        	                          System.out.println("    ----------------------                        ");
 		      			        	                          System.out.println("   *                                                                 * ");
-		      			        	                          System.out.println("                                                                     ");
+		      			        	                          System.out.println("                                                                       ");
 		      			        	                       System.out.println("    Add the Brand type");
 		   		         	        				       String bName = scan.nextLine();
 		   		         	        				       
@@ -263,7 +266,7 @@ public class ECommerceHome {
    		         	        				               System.out.println("    Add the Brand name (Converse, Vanz, and Fila)");
    		         	        				               scan.nextLine();
    		         	        				               String gName = scan.nextLine();
-   		         	        				                     System.out.println("                                                                     ");
+   		         	        				                     System.out.println("                                                                       ");
    		         	        				                     System.out.println("   *                                                                 * ");
 		      			        	                             System.out.println("    ----------------------                        ");
 		      			        	                             System.out.println("   *                                                                 * ");
@@ -280,13 +283,13 @@ public class ECommerceHome {
 	   		         	                        	    System.out.println("   *                                                                 * ");
 	      			        	                        System.out.println("    ----------------------                        ");
 	      			        	                        System.out.println("   *                                                                 * ");
-	      			        	                        System.out.println("                                                                     ");   
+	      			        	                        System.out.println("                                                                       ");   
 	      			        	                            System.out.println("    Which shop would you like to change?");
 		   		         	                        	    String brands_typeInput = scan.nextLine();
 		   		         	                        	    
 		   		         	                        	    System.out.println("    What is the new type?");
 		   		         	                        	    String brandsn_typeInput = scan.nextLine();
-		   		         	                            System.out.println("                                                                     ");    
+		   		         	                            System.out.println("                                                                       ");    
 		   		         	                            System.out.println("   *                                                                 * ");
       			        	                            System.out.println("    ----------------------                        ");
       			        	                            System.out.println("   *                                                                 * ");   
@@ -300,10 +303,10 @@ public class ECommerceHome {
 		   		         	                            System.out.println("   *                                                                 * ");
 	      			        	                        System.out.println("    ----------------------                        ");
 	      			        	                        System.out.println("   *                                                                 * ");
-	      			        	                        System.out.println("                                                                     "); 
+	      			        	                        System.out.println("                                                                       "); 
 		   		         	                        	     System.out.println("    Enter the brands type of the shop you want to delete"); 
 		   		         	                        	     String idInput = scan.nextLine();
-		   		         	                           System.out.println("                                                                     ");
+		   		         	                           System.out.println("                                                                       ");
 		   		         	                           System.out.println("   |                                                                 | ");
 		      			        	                   System.out.println("   *                                                                 * ");
 		   		         	         				         shopDAO.deleteShop(idInput);
