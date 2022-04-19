@@ -60,7 +60,29 @@ SELECT * FROM customer;
 SELECT * FROM  customer INNER JOIN shop  ON shop_id = shop_id_fk ;
 
 
+-- Drop table customer need add fk shop.
+DROP TABLE customer;
 
+-- New one customer table
+-- Create Customer table that we have the information of the Customer
+CREATE TABLE customer (
+customer_id serial PRIMARY KEY,
+first_name TEXT,
+second_name TEXT,
+email TEXT,
+address TEXT,
+shop_id_fk int REFERENCES shop (shop_id)
+
+);
+
+
+-- Insert values to customer table (new)
+INSERT INTO customer (first_name, second_name, email, address, shop_id_fk)
+VALUES ('Martha', 'Sanz', 'Sanz@gmail.com', '35 Street, NY', 1 ),
+	   ('Joseph', 'Pineda', 'Pineda@gmail.com', '145 Street, NJ', 2), 
+	   ('Josephine', 'Chist', 'C@gmail.com', '123 Jake street', 3);
+	  
+SELECT * FROM customer;
 
 
 

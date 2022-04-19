@@ -4,7 +4,7 @@ public class Users {
 	
 	//All variables for the Shop class - must match the Shop table in the database
 	//All variables are  private because private coupled with getters and setters (ENCAPSULATION)
-	private int users_id;
+	private int user_id;
 	private String first_name;
     private String second_name;
     private String username;
@@ -13,25 +13,33 @@ public class Users {
     
    
 
+				public Users(String first_name, String second_name, String username, String userpassword) {
+		super();
+		this.first_name = first_name;
+		this.second_name = second_name;
+		this.username = username;
+		this.userpassword = userpassword;
+	}
+
 				//no args constructor
                   public Users() {
                 	  super(); }
 
                 // Make constructor with args	  
-				public Users(int users_id, String first_name, String second_name, String username, String userpassword) {
-					this.users_id = users_id;
+				public Users(int user_id, String first_name, String second_name, String username, String userpassword) {
+					this.user_id = user_id;
 					this.first_name = first_name;
 					this.second_name = second_name;
 					this.username = username;
 					this.userpassword = userpassword;
 				}
 
-				public int getUsers_id() {
-					return users_id;
+				public int getUser_id() {
+					return user_id;
 				}
 
-				public void setUsers_id(int users_id) {
-					this.users_id = users_id;
+				public void setUser_id(int users_id) {
+					this.user_id = users_id;
 				}
 
 				public String getFirst_name() {

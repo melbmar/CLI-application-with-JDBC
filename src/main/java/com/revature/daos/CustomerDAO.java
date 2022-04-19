@@ -43,23 +43,25 @@ public class CustomerDAO implements CustomerDAOInterface {
 			while(rs.next()) {
 				
 				//create new Employee objects based on the data, and fill in the ArrayList
-				Customer customers = new Customer(
-						rs.getInt("customer_id"),
+				Customer e = new Customer(
 						rs.getString("first_name"),
 						rs.getString("second_name"),
 						rs.getString("email"),
-						rs.getString("address")
-						//null
+						rs.getString("address"),
+						null
+						
 						);
+						
+
 				//get the foreign key from the shop table to use in our getcustomerbyshop() method
 				String shopFK = rs.getString("shop_id_fk");
 				
 				Shop c = shopDAO.getShopByBrands_name(shopFK);
 				
 				//fill in the previously null Role variable in this new Employee object (with the setter!)
-				customers.setBrands_name(c);
+				 e.setShop(c);
 				//fill in the employeeList with each while loop until eventually rs.next() == false.
-				customerList.add(customers);
+				customerList.add(e);
 			}
 				return customerList;	
 			
@@ -73,23 +75,23 @@ public class CustomerDAO implements CustomerDAOInterface {
 	@Override
 	public void addCustomer(Customer customer) {
 		try(Connection conn = ConnectionUtil.getConnection()){
-			String sql = "insert into customer (customer_id, first_name, second_name, email, address)"
-					+ "values(?,?,?,?,?);";
+			String sql = "insert into customer (first_name, second_name, email, address)"
+					+ "values(?,?,?,?);";
 			//String will connect put send(inside) of the database
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			//fill in the values of our variables using ps.setXYZ()
-			ps.setInt(1,customer.getCustomer_id());
-			ps.setString(2,customer.getFirst_name());
-			ps.setString(3, customer.getSecond_name());
-			ps.setString(4, customer.getEmail());
-			ps.setString(5, customer.getAddress());
+			//ps.setInt(1,customer.getCustomer_id());
+			ps.setString(1, customer.getFirst_name());
+			ps.setString(2, customer.getSecond_name());
+			ps.setString(3, customer.getEmail());
+			ps.setString(4, customer.getAddress());
 			
 			
 			    //Execute the Update!! (the method is called executeUpdate(), but it's for INSERTS, UPDATES, and DELETES)
 			     ps.executeUpdate();
 			     
-			          System.out.println("   New Customer " + customer.getFirst_name() +" "+ customer.getSecond_name()+ " added in our system " );
+			          System.out.println("     The New  Customer " + customer.getFirst_name() +" "+ customer.getSecond_name()+ " was added in our system " );
 			
 		} catch (SQLException e) {
 			System.out.println("Something went wrong inserting Customer!");

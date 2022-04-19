@@ -30,7 +30,7 @@ public class TestClass {
 	       String name1 = "Canvas Platform Chuck Taylor All Star";
 	       String email = "firssecd@mail.com";
 	       String address = "New York 'fake'";
-	       int customer_id = 2;
+	       String username = "Marl";
 	       String first_name = "Melb";
 	    		  
 	       
@@ -126,8 +126,8 @@ public class TestClass {
 	    @Test
 	    public void testCustomer_id() {
 	    	System.out.println(" IDENTIFICATION ");
-	    	int result = customer.getCustomer_id();    	
-	    	assertEquals(customer_id, result);
+	    	String result = customer.getusername();    	
+	    	assertEquals(username, result);
 	    }
 	
 	    

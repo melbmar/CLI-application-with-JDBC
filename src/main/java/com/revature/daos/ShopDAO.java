@@ -58,7 +58,7 @@ public class ShopDAO implements ShopDAOInterface {
 					
 					ps.execute();
 					
-					System.out.println(brands_type + " salary has been updated to: " + brands_name);
+					System.out.println(brands_type + " has been updated to: " + brands_name + " thank you for make this change. ");
 					
 				} catch (SQLException e) {
 					System.out.println("    Couldn't update !");
@@ -69,17 +69,20 @@ public class ShopDAO implements ShopDAOInterface {
 				
 			}
 			
-			public void deleteShop(int Id) {
+			public void deleteShop(String brands_type) {
 				try(Connection conn = ConnectionUtil.getConnection()){
-					String sql = "delete from shop where shop_id = ?;";
+					String sql = "delete from shop where brands_name = ?;";
 					
+					//instantiate our PreparedStatement to fill in the variable
 					PreparedStatement ps = conn.prepareStatement(sql);
 					
-					ps.setInt(1, Id);
+					ps.setString(1, brands_type);
 					
+					//ps.executeUpdate() to send our delete to the DB
 					ps.executeUpdate();
+					//ps.executeQuery();
 					
-					System.out.println("Get delete shop #" + Id);
+					System.out.println("     Get delete shop #" + brands_type);
 					
 					
 				} catch (SQLException e) {
@@ -97,25 +100,26 @@ public class ShopDAO implements ShopDAOInterface {
 				 try(Connection conn = ConnectionUtil.getConnection()){
 					 
 					  //String will connect put send(inside) of the database
-					  String sql = "insert into shop (shop_id, brands_type, color_name, size_number, brands_name)" 
-					   + " values (?,?,?,?,?);"; 
+					  String sql = "insert into shop (brands_type, color_name, size_number, brands_name)" 
+					   + " values (?,?,?,?);"; 
 					  
 	                    //Instantiate a PreparedStatement to fill in the variables of our initial SQL String
 					    PreparedStatement ps = conn.prepareStatement(sql);
 					  
-					    ps.setInt(1, shop.getShop_id());
-						ps.setString(2, shop.getBrands_type());
-						ps.setString(3, shop.getColor_name());
-						ps.setInt(4, shop.getSize_number());
-						ps.setString(5, shop.getBrands_name());
+					    //ps.setInt(1, shop.getShop_id());
+						ps.setString(1, shop.getBrands_type());
+						ps.setString(2, shop.getColor_name());
+						ps.setInt(3, shop.getSize_number());
+						ps.setString(4, shop.getBrands_name());
 						
 						//Execute the Update!! (the method is called executeUpdate(), but it's for INSERTS, UPDATES, and DELETES)
-						ps.executeQuery();
+						ps.executeUpdate();
 						
 						//Tell the user the insert was successful
-					    System.out.println("         Shop" + shop.getBrands_name() + ", " + shop.getColor_name() +  ", "
-					    		                     + shop.getColor_name() + ", " + shop.getSize_number() + ", " + shop.getBrands_name() +
-					    		                     " added.");
+					    System.out.println("          New Shop" + shop.getBrands_name() + ", " + shop.getColor_name() +  ", "
+					    		                     + shop.getColor_name() + ", " + shop.getSize_number() + ", " 
+					    		                     + shop.getBrands_name()+ " was added successfully.");
+					    		                    
 			   
 			 } catch (SQLException e) {
 			System.out.println("Something happened inserting Your Information !");

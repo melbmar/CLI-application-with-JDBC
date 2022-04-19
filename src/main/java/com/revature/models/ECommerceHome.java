@@ -18,8 +18,9 @@ public class ECommerceHome {
 	
 	//Instantiating an ShopDAO, ItemsDAO, and UserDAO objects, need to used their methods
 	 UsersDAO uDAO = new UsersDAO();
-	 ShopDAO shopDAO = new ShopDAO();
 	 CustomerDAO cusDAO = new CustomerDAO();
+	 ShopDAO shopDAO = new ShopDAO();
+	
 
     
 	
@@ -94,7 +95,7 @@ public class ECommerceHome {
 		                       			   
 		                       			   
 		                       			   System.out.println("     1: Add New User                         ");
-		                       			   System.out.println("     2: Check Your User/Password             ");
+		                       			   System.out.println("     2: Check All Users Name/Password        ");
 		                       			   System.out.println("     3: Show shop by ID                      ");
 		                       			   System.out.println("     4: Show customer by Shop                "); 
 		                       			   System.out.println("     5: Add new Customer                     ");
@@ -108,21 +109,21 @@ public class ECommerceHome {
 		                     scan.nextLine(); //without nextLine(), the application won't move to the next line... so we need it!            
 		                          switch(input) {
 		         			
-		         			            case 1: {
+		         			            
 		         			             // The statement will choose the all items and the customer can interact with the shop
-		      			        	      switch(input) {
+		      			        	    
 		      			                         case 1:{
 		      			                        	 
 		      			               				  System.out.println("     Hello! New User, Please Enter Your First Name  ^_^ ");
 		      			               				  String fName = scan.nextLine();
 		      			               				  
-		      			               				  System.out.println(      "Please Enter Your Second Name");
+		      			               				  System.out.println("     Please Enter Your Second Name");
 		      			               				  String lName = scan.nextLine();
 		      			               				  
-		      			               				  System.out.println(      "Username");
+		      			               				  System.out.println("     Username");
 		      			               				  String uName = scan.nextLine();
 		      			               				  
-		      			               				  System.out.println(      "Userpassword");
+		      			               				  System.out.println("     Userpassword");
 		      			               				  String pName = scan.nextLine();	 
 		      			               				  
 		      			               				  
@@ -136,14 +137,18 @@ public class ECommerceHome {
 		      			        	                case 2:{
 		      			        	                    //Call the getUsers() method from the EmployeeDAO, put the results into a variable
 		      			        	                	ArrayList<Users> use = uDAO.displayUsers();
-		      			        	                        use.forEach(users -> {
+		      			        	                	  for(Users u : use) {
+		      			        	                        System.out.println("   *                                                                 * ");
+		      			        	                        System.out.println("                                                                       ");
+		      			        	                        System.out.println("   *                                                                 * ");
+		      			        	                    	System.out.println("    First Name: " + u.getFirst_name()); 
+		      			        	                    	System.out.println("    Second Name: " + u.getSecond_name());
+		      			        	                    	System.out.println("    Username: " + u.getUsername());
+		      			        	                    	System.out.println("    Userpassword: " + u.getUserpassword());
 		      			        	                    	System.out.println("   *                                                                 * ");
-		      			        	                    	System.out.println("    First Name: " + users.getFirst_name());
-		      			        	                    	System.out.println("    Second Name: " + users.getSecond_name());
-		      			        	                    	System.out.println("    Username: " + users.getUsername());
-		      			        	                    	System.out.println("    Userpassword: " + users.getUserpassword());
-		      			        	                    	System.out.println("   *                                                                * ");
-		      			        	                    });
+		      			        	                    	System.out.println("                                                                       ");
+		      			        	                    	System.out.println("   *                                                                 * ");
+		      			        	                	    };
 		      			        	                        
 		      			        	                   
 		      			        	                
@@ -151,43 +156,62 @@ public class ECommerceHome {
 		      			        	                   }
 		      			        	                
 		      			        	                case 3:{
-		      			        	                	System.out.println("    What shop Id whould you like to check?");
+		      			        	                	System.out.println("   *                                                                 * ");
+		      			        	                    System.out.println("   |                                                                 | ");
+		      			        	                	System.out.println("   *                                                                 * ");
+		      			        	                	System.out.println("        What shop Id whould you like to check?");
 		      			        	                	int idInput = scan.nextInt();
-		      			        	                	//scan.nextLine();
+		      			        	                	
+		      			        	           
+		      			        	                    
+		      			        	                	System.out.println("   *                                                                 * ");
+		      			        	                    System.out.println("   |                                                                 | ");
+	      			        	                    	System.out.println("   *                                                                 * ");
 		      			        	                	
 		      			        	                	//Creating shop object.
 		      			        	                	Shop shop = shopDAO.getShopById(idInput);
 		      			        	                	     System.out.println(shop);
-	        	                                              }
-		      			        	                     }
+	        	                                             
+		      			        	                   
 		      			        	                break;
 		      			        	                     }
 		      			        	                	   case 4:{
 		      			        	                		//prompt the user to enter a shop to search for
-		      			        	         				System.out.println("    Which shop would you like to search for?");
-		      			        	         				System.out.println("     1. Converse 2. Vanz 3. Fila");
+		      			        	                		    System.out.println("   *                                                                 * ");
+			      			        	                        System.out.println("                         ----------------------                        ");
+			      			        	                        System.out.println("   *                                                                 * ");
+				      			        	              	
+		      			        	                		System.out.println("    Which shop would you like to search for?");
+		      			        	         				System.out.println("    1. Converse 2. Vanz 3. Fila");
 		      			        	         				
-		      			        	         			    //taking the user input
+		      			        	         			    
+		      			        	         				
+		      			        	         				//taking the user input
 		      			        	      				    String shopInput = scan.nextLine();
 		      			        	      				    //ArrayList, fill it with the results of the DAO method that gets employees by role shop
 		      			        	      				    ArrayList<Customer> customerList = cusDAO.getCustomerByshop(shopInput);
 		   		                   	
 		   		                   				            //"for every Customer that we'll call "e" in the employeeList", do something
 		   		                   					       for (Customer cu : customerList) {
-		   		                   					        	System.out.println("   *                                                                 * ");
-		   		                   						        System.out.println(cu.getCustomer_id());
-		   		                   						        System.out.println(cu.getFirst_name());
-		   		                   						        System.out.println(cu.getSecond_name());
-		   		                   						        System.out.println(cu.getEmail());
-		   		                   						        System.out.println(cu.getAddress());
-		   		                   						        System.out.println(cu.getBrands_name());
-		   		                   						        System.out.println("   *                                                                 * ");
+		   		                   					    	System.out.println("   *                                                                 * ");
+			      			        	                    System.out.println("   |                                                                 | ");
+		      			        	                    	System.out.println("   *                                                                 * ");
+		   		                   						                 System.out.println(cu.getFirst_name());
+		   		                   						                 System.out.println(cu.getSecond_name());
+		   		                   						                 System.out.println(cu.getEmail());
+		   		                   						                 System.out.println(cu.getAddress());
+		   		                   					
+		   		                   						    System.out.println("   *                                                                 * ");
+			      			        	                    System.out.println("   |                                                                 | ");
+		      			        	                    	System.out.println("   *                                                                 * ");
 		   		                   					       }
-		   		         	                          break;
+		   		                   					 break;
 		   		                   				       
 		      			        	                	   }
 		   		         	                          case 5: { 
-		   		         	                
+		   		         	                        	    System.out.println("   *                                                                 * ");
+		      			        	                        System.out.println("                         ----------------------                        ");
+		      			        	                        System.out.println("   *                                                                 * ");
 		   		         	                        	System.out.println("    Enter Customer First Name");
 		   		         	        				    String fName = scan.nextLine();
 		   		         	                        	 
@@ -201,15 +225,20 @@ public class ECommerceHome {
 	   		         	    				            String aName = scan.nextLine();
 	   		         	    				        
 		   		         	    				        
-		   		         	    				            int shopId = scan.nextInt();
-		   		         	    				            Customer cusm = new Customer(0, fName, sName, eName, aName);
+		   		         	    				            // int shopId = scan.nextInt();
+	   		         	    				                // Instantiating an ArryList to add into the customer table the new input
+		   		         	    				            Customer cusm = new Customer (fName, sName, eName, aName);
 		   		         	    				            cusDAO.addCustomer(cusm);
-		   		         	                               }
-		   		         	 	                        break;
+		   		         	    				        break;
+		   		         	                          }
+		   		         	 	                   
 		                                                     
 		   		         	                          case 6:{
+		   		         	                        	    System.out.println("   *                                                                 * ");
+		      			        	                        System.out.println("                         ----------------------                        ");
+		      			        	                        System.out.println("   *                                                                 * ");
 		   		         	                        	    
-		   		         	                        	   System.out.println("    Add the Brand type");
+		      			        	                       System.out.println("    Add the Brand type");
 		   		         	        				       String bName = scan.nextLine();
 		   		         	        				       
 		   		         	        				       System.out.println("    Add the Color ");
@@ -218,16 +247,25 @@ public class ECommerceHome {
 	   		         	        				           System.out.println("    Add the Size ");
    		         	        				               int sName = scan.nextInt();
    		         	        				               
+   		         	        				            
    		         	        				               System.out.println("    Add the Brand name (Converse, Vanz, and Fila)");
 		         	        				               String gName = scan.nextLine();
-		         	        				               
-		         	        				                  Shop shop = new Shop (0,bName, cName, sName, gName);
-		         	        				                  shopDAO.addShop(shop); 
+   		         	        				               
 		         	        				                  
+		         	        				                  // Instantiating an ArryList to add into the shop table the new input
+		         	        				                  Shop shop = new Shop (bName, cName, sName, gName);
+		         	        				                  shopDAO.addShop(shop); 
+		         	        				                
+		         	        				                  break;   
 		   		         	        				       
 		   		         	                          }
 	   		         	                          case 7: {
-		   		         	                        	    System.out.println("    Which shop would you like to change?");
+	   		         	                        	  
+	   		         	                        	    System.out.println("   *                                                                 * ");
+	      			        	                        System.out.println("                         ----------------------                        ");
+	      			        	                        System.out.println("   *                                                                 * ");
+		   		         	                        	   
+	      			        	                            System.out.println("    Which shop would you like to change?");
 		   		         	                        	    String brands_typeInput = scan.nextLine();
 		   		         	                        	    
 		   		         	                        	    System.out.println("    What is the new type?");
@@ -235,41 +273,51 @@ public class ECommerceHome {
 		   		         	                        	    
 		   		         	                        	    // // Instantiating an ArryList to add into the user table the new input
 		   		         	    	                       shopDAO.updateShopBrandsName(brands_typeInput, brandsn_typeInput);
-		   		               
+		   		         	    	                   break;
 		   		         	                                }
-		   		         	                        	break;
+		   		         	                        
 		   		         	                        		
 		   		         	                         case 8: {
-		   		         	                        	     System.out.println("    Enter the ID of the shop you want to delete"); 
-		   		         	                        	     int idInput = scan.nextInt();
-		   		         	         				
+		   		         	                            System.out.println("   *                                                                 * ");
+	      			        	                        System.out.println("                         ----------------------                        ");
+	      			        	                        System.out.println("   *                                                                 * ");
+		   		         	                        	 
+		   		         	                        	     System.out.println("    Enter the brands type of the shop you want to delete"); 
+		   		         	                        	     String idInput = scan.nextLine();
+		   		         	                           System.out.println("   |                                                                 | ");
+		      			        	                   System.out.println("   *                                                                 * ");
 		   		         	         				         shopDAO.deleteShop(idInput);
-		   		         	                                }
-		   		         	                          break;
+		   		         	         				    break;   
+		   		         	                         }
+		   		         	                        
 		   		         	                          
 		   		         	                         case 9:{
-		   		         	                              System.out.println("    Bye Bye user! Come again soon.  ^_^ ");
+		   		         	                            System.out.println("   *                                                                 * ");
+	      			        	                        System.out.println("                                                                       ");
+	      			        	                        System.out.println("   *                                                                 * ");
+	      			        	                        System.out.println("   |                                                                 | ");
+		      			        	                    System.out.println("   *                                                                 * ");  
+		      			        	                    
+	      			        	                              System.out.println("             Bye Bye user! Come again soon.  ^_^ ");
 		   		         	                        	      displayECommerceHome = false;
-		   		         	                        	      
+		   		         	                        	   
+		   		         	                        	System.out.println("   *                                                                 * ");
+		      			        	                    System.out.println("   |                                                                 | ");
+			      			        	                System.out.println("   *                                                                 * ");    
+		   		         	                        	      break;
+		   		         	                        	  
                                                               }
-		   		         	                            break;
-
+		   		         	                          
+			          
 		      			    			default: {
 		      			    				//this default block will run if the user inputs a number that isn't one of the options
 		      			    				System.out.println("What did you say?? Try again. Do better...");
 		      			    				
 		      			    				break;
 		      			    			}
-		      			    		
-		      			        	    	  
-		      			        	                	  
-		                          } 
-		         			            
-		      			        	      
-		      			        	     
-		        } //while loop ends here
+		                          }
 		                           	
-		                           	
+		                               }
 		 } //while loop ends here
 			     			          
 	 } // method ends here

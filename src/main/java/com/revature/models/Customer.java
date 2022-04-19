@@ -14,7 +14,7 @@ public class Customer {
 	
 	      //Every Customer in this application will have a Shop and Items associated with it
 	    private Shop shop;
-		private String brands_name;
+		
 
 	      
 	         
@@ -23,60 +23,119 @@ public class Customer {
 				             super();
 				             // TODO Auto-generated constructor stub
 			                         }
-	               // args constructor
-				   public Customer(int customer_id, String first_name, String second_name, String email, String address) {
+
+
+
+
+				public Customer(String first_name, String second_name, String email, String address) {
 					super();
 					this.customer_id = customer_id;
 					this.first_name = first_name;
 					this.second_name = second_name;
 					this.email = email;
 					this.address = address;
-		
+					this.shop = shop;
 				}
-				// I created getter/Setter (ENCAPSULATION) one of the pillar of OOP-Java
-	             // Both allows me to access and change variable to private
-				
-				public int getCustomer_id() {
-					return customer_id;
+
+
+
+
+				public Customer(String first_name, String second_name, String email, String address, Shop shop) {
+					super();
+					this.first_name = first_name;
+					this.second_name = second_name;
+					this.email = email;
+					this.address = address;
+					this.shop = shop;
 				}
-				public void setCustomer_id(int customer_id) {
-					this.customer_id = customer_id;
+
+
+				@Override
+				public String toString() {
+					return "Customer [first_name=" + first_name + ", second_name=" + second_name + ", email=" + email
+							+ ", address=" + address + ", shop=" + shop + "]";
 				}
+
+
+
+
 				public String getFirst_name() {
 					return first_name;
 				}
+
+
+
+
 				public void setFirst_name(String first_name) {
 					this.first_name = first_name;
 				}
+
+
+
+
 				public String getSecond_name() {
 					return second_name;
 				}
+
+
+
+
 				public void setSecond_name(String second_name) {
 					this.second_name = second_name;
 				}
+
+
+
+
 				public String getEmail() {
 					return email;
 				}
+
+
+
+
 				public void setEmail(String email) {
 					this.email = email;
 				}
+
+
+
+
 				public String getAddress() {
 					return address;
 				}
+
+
+
+
 				public void setAddress(String address) {
 					this.address = address;
 				}
-				public String getBrands_name() {
-					return brands_name;
+
+
+
+
+				public Shop getShop() {
+					return shop;
 				}
-				public void setBrands_name(String brands_name) {
-					this.brands_name = brands_name;
-				}
-			
-				public void setBrands_name(Shop shop) {
+
+
+
+
+				public void setShop(Shop shop) {
 					this.shop = shop;
-					
 				}
+
+
+
+
+				public String getusername() {
+					// TODO Auto-generated method stub
+					return null;
+				}
+
+	               
+				
 				
 
 } //class ends here

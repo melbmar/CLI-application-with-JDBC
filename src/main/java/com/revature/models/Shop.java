@@ -3,9 +3,25 @@ package com.revature.models;
 // This class model will have table in our database
 public class Shop {
 
-	    //All variables for the Shop class - must match the Shop table in the database
+	    @Override
+	public String toString() {
+		return "Shop [shop_id=" + shop_id + ", brands_type=" + brands_type + ", color_name=" + color_name
+				+ ", size_number=" + size_number + ", brands_name=" + brands_name + "]";
+	}
+
+
+		//All variables for the Shop class - must match the Shop table in the database
 		//All variables are  private because private coupled with getters and setters (ENCAPSULATION)
 		private int shop_id;
+		public Shop(String brands_type, String color_name, int size_number, String brands_name) {
+			super();
+			this.brands_type = brands_type;
+			this.color_name = color_name;
+			this.size_number = size_number;
+			this.brands_name = brands_name;
+		}
+
+
 		private String brands_type;
 		private String color_name;
 		private int size_number;
