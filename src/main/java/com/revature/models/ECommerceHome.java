@@ -189,7 +189,7 @@ public class ECommerceHome {
 			      			        	                        System.out.println("   *                                                                 * ");
 				      			        	              	
 		      			        	                		System.out.println("    Which shop would you like to search for?");
-		      			        	         				System.out.println("    1. Converse 2. Vanz 3. Fila");
+		      			        	         				System.out.println("    1. Converse 2. Vans  3. Fila");
 		      			        	         				
 		      			        	         			    
 		      			        	         				
@@ -263,7 +263,7 @@ public class ECommerceHome {
 	   		         	        				           int sName = scan.nextInt();
    		         	        				               
    		         	        				            
-   		         	        				               System.out.println("    Add the Brand name (Converse, Vanz, and Fila)");
+   		         	        				               System.out.println("    Add the Brand name (Converse, Vans, and Fila)");
    		         	        				               scan.nextLine();
    		         	        				               String gName = scan.nextLine();
    		         	        				                     System.out.println("                                                                       ");
